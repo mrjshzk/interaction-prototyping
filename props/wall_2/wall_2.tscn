@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkl2l0485cu28"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3qx45ysvibfd" path="res://props/wall_2/mesh_wall_2.mesh" id="1_rs7ia"]
+[ext_resource type="SteamAudioMaterial" uid="uid://cp5pfey82wrv5" path="res://addons/godot-steam-audio/materials/default_material.tres" id="2_eafa4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y70os"]
+points = PackedVector3Array(-1, -0.1, -2, -1, -0.1, 0, -1, 2.16067e-07, -2, 1, -0.1, -2, -1, -9.56655e-06, 0, 1, -0.1, 0, 1, -9.56655e-06, 0, 1, -9.56655e-06, -2)
+
+[node name="wall_2" type="Node3D"]
+
+[node name="wall_2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_rs7ia")
+
+[node name="SteamAudioGeometry" type="SteamAudioGeometry" parent="wall_2"]
+material = ExtResource("2_eafa4")
+
+[node name="wall_2_col" type="StaticBody3D" parent="wall_2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_2/wall_2_col"]
+shape = SubResource("ConvexPolygonShape3D_y70os")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6gkiq82ojuk2"]
+
+[ext_resource type="Script" uid="uid://b6ciuas3xybay" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Resource" uid="uid://xq2u8obgfqyj" path="res://scenes/player/input/input_mapping.tres" id="2_gmlin"]
+[ext_resource type="Resource" uid="uid://bsheq1aat10ks" path="res://scenes/player/input/input_definitions/movement.tres" id="3_lvxji"]
+[ext_resource type="Resource" uid="uid://d2ytp6apt1lvl" path="res://scenes/player/input/input_definitions/dash.tres" id="5_h17s1"]
+[ext_resource type="Resource" uid="uid://3g5rirjlk3ve" path="res://scenes/player/input/input_definitions/crouch.tres" id="6_je7p5"]
+[ext_resource type="Script" uid="uid://b60ef5sh05sk8" path="res://scenes/player/input/input_gatherer.gd" id="7_0owmy"]
+[ext_resource type="Resource" uid="uid://c24ek2u6nyxgx" path="res://scenes/player/input/input_definitions/jump.tres" id="7_fm80t"]
+[ext_resource type="Script" uid="uid://qtp6agocqg0e" path="res://classes/debug_nodes/camera_mode_toggler.gd" id="8_5gtgg"]
+[ext_resource type="Script" uid="uid://bfeo8s5hi01tb" path="res://scenes/player/camera/camera.gd" id="8_qek5x"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="10_h17s1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0owmy"]
+radius = 0.38
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "player_input_gatherer")]
+script = ExtResource("1_8afob")
+camera = NodePath("Camera")
+player_input_gatherer = NodePath("InputGatherer")
+metadata/_custom_type_script = ExtResource("1_8afob")
+
+[node name="InputGatherer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_0owmy")
+input_mapping_context = ExtResource("2_gmlin")
+movement = ExtResource("3_lvxji")
+dash = ExtResource("5_h17s1")
+crouch = ExtResource("6_je7p5")
+jump = ExtResource("7_fm80t")
+metadata/_custom_type_script = ExtResource("7_0owmy")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_0owmy")
+debug_color = Color(0.94144, 1.01075e-05, 0.610584, 0.42)
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67, 0)
+script = ExtResource("8_qek5x")
+body = NodePath("..")
+camera_lerp_speed = 20.0
+metadata/_custom_type_script = ExtResource("8_qek5x")
+
+[node name="DebugMouseModeToggler" type="Node" parent="Camera"]
+script = ExtResource("8_5gtgg")
+metadata/_custom_type_script = ExtResource("8_5gtgg")
+
+[node name="GuideDebugger" parent="." instance=ExtResource("10_h17s1")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -156.0
+offset_bottom = 116.0
+grow_horizontal = 0
+grow_vertical = 1

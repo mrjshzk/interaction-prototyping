@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConfigPreferences" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://classes/preferences/preferences.gd" id="1_fg2q8"]
+
+[resource]
+script = ExtResource("1_fg2q8")
+fullscreen = true
+resolution = Vector2i(1920, 1080)
+graphics_type = "High"
+master_volume = 10
+sfx_volume = 10
+music_volume = 10
+sensitivity = 1.0
