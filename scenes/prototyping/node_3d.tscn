@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5tpes78k8pjh"]
-
-[ext_resource type="Script" uid="uid://tx7563mb2x4p" path="res://scenes/prototyping/node_3d.gd" id="1_y2j5j"]
-
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_y2j5j")

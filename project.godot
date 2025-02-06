@@ -14,11 +14,12 @@ quick_scenes/quick_run_shortcut=Object(Shortcut,"resource_local_to_scene":false,
 ],"script":null)
 
 quick_scenes/selected_scene=0
-quick_scenes/scene_list=PackedStringArray("uid://k1qb341w3o27")
+quick_scenes/scene_list=PackedStringArray("")
 
 [application]
 
 config/name="FPShooter"
+run/main_scene="uid://k1qb341w3o27"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=160
 config/icon="res://icon.svg"
@@ -37,6 +38,8 @@ gdscript/warnings/unused_parameter=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
 
 [editor]
 
@@ -53,6 +56,7 @@ folder_colors={
 "res://assets/": "green",
 "res://classes/": "yellow",
 "res://cleanup_import/": "gray",
+"res://player/": "pink",
 "res://props/": "purple",
 "res://scenes/": "red"
 }
